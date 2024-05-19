@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Carambar Jokes</title>
-    <link href="./style.css" rel="stylesheet"></link>
-  </head>
-  <body>
-    <h1>Bienvenue chez Carambar & co</h1>
-    <button id="jokeButton">Afficher une blague</button>
-
-    <label for="select_jokeId">Select joke ID:</label>
-    <input type="number" id="jokeId" name="select_jokeId" />
-    <button id="submit_jokeId">Submit</button>
-    <button id="allTheJokes">All the jokes ! Now !</button>
-    <button id="addAJoke">Add a joke</button> 
-    <input type="text" id="newJokeText" name="newJokeText">
-
-    <p id="jokeText"></p>
-
-    <script>
-      const jokeId = document.getElementById("jokeId");
+const jokeId = document.getElementById("jokeId");
 const textJoke= document.getElementById("jokeText");
       document
         .getElementById("jokeButton")
@@ -70,6 +49,3 @@ const textJoke= document.getElementById("jokeText");
             docu.appendChild(child);
           });
         });
-    </script>
-  </body>
-</html>
