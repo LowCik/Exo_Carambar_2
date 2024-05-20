@@ -4,7 +4,6 @@ const Joke = require("./models/joke");
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const cors = require("cors");
-const { where } = require("sequelize");
 
 const app = express();
 app.use(express.json());
@@ -19,7 +18,7 @@ const swaggerOptions = {
       version: "1.0.0",
       description: "API for managing Carambar jokes",
     },
-    servers: [{ url: "http://localhost:3000" }],
+    servers: [{ url: "https://exo-carambar-2.onrender.com" }],
   },
   apis: ["./index.js"],
 };
@@ -37,15 +36,6 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
  *         description: A list of jokes
  */
 app.get("/jokes", async (req, res) => {
-  const jokes = await Joke.findAll({
-    attributes: {
-      include: ["text"],
-    },
-  });
-  res.json(jokes); // Renvoie un Array de tout les text
-});
-
-app.get("/jokes/text", async (req, res) => {
   const jokes = await Joke.findAll({
     attributes: {
       include: ["text"],
@@ -93,11 +83,6 @@ app.get("/jokes/:id", async (req, res) => {
   }
 });
 
-app.get("/jokes_count", async (req, res) => {
-  const joke = await Joke.findAll();
-  res.send(joke);
-});
-
 /**
  * @swagger
  * /jokes:
@@ -116,7 +101,7 @@ app.get("/jokes_count", async (req, res) => {
  *       201:
  *         description: Joke created
  */
-app.post("/jokes/add", async (req, res) => {
+app.post("/jokes", async (req, res) => {
   const joke = await Joke.create({ text: req.body.text });
   res.status(201).json(joke);
 });
