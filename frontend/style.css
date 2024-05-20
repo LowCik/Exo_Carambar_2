@@ -11,7 +11,7 @@ button {
   text-shadow: 3px 1px 6px rgba(0,0,0,0.52);
   color: rgb(133, 61, 33);
   font-size: 20px;
-  padding: 10px 20px;
+  padding: 5px 10px;
   cursor: pointer;
 }
 p {

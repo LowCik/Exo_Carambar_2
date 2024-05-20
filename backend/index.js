@@ -116,7 +116,7 @@ app.get("/jokes_count", async (req, res) => {
  *       201:
  *         description: Joke created
  */
-app.post("/jokes", async (req, res) => {
+app.post("/jokes/add", async (req, res) => {
   const joke = await Joke.create({ text: req.body.text });
   res.status(201).json(joke);
 });

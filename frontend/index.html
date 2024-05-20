@@ -7,16 +7,21 @@
   </head>
   <body>
     <h1>Bienvenue chez Carambar & co</h1>
-    <button id="jokeButton">Afficher une blague</button>
+    <button id="jokeButton">Affiche une blague au pif</button>
 
-    <label for="select_jokeId">Select joke ID:</label>
-    <input type="number" id="jokeId" name="select_jokeId" />
-    <button id="submit_jokeId">Submit</button>
-    <button id="allTheJokes">All the jokes ! Now !</button>
-    <button id="addAJoke">Add a joke</button> 
-    <input type="text" id="newJokeText" name="newJokeText">
+    <button id="allTheJokes">Montre moi toutes les blagues !</button>
+    <div>
+      <label for="select_jokeId">Selectionne ta blague</label>
+      <input type="number" id="jokeId" name="select_jokeId" />
+      <button id="submit_jokeId">Hop!</button>
+    </div>
+    <!-- <form action="/backend/index.js" method="post">   
+      <label for="newJokeText">Ecris ta blague:</label>     
+      <input type="text" id="newJokeText" name="newJokeText">
+      <button id="addAJoke">Hop!</button>
+    </form> -->
 
-    <p id="jokeText"></p>
+    <p id="jokeText"> C'est ici que ça se passe :)</p>
 
     <script>
       const jokeId = document.getElementById("jokeId");
@@ -69,6 +74,14 @@ const textJoke= document.getElementById("jokeText");
 
             docu.appendChild(child);
           });
+        });
+        document
+        .getElementById("addAJoke")
+        .addEventListener("click", async () => {
+          const response = await fetch(
+            "http://localhost:3000/jokes/add"
+          );
+          document.getElementById("jokeText").textContent = "You added a new joke !";
         });
     </script>
   </body>
